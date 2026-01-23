@@ -17,18 +17,14 @@ state_space = {
     "Lodz": {"Konin": 165, "Warsaw": 150}
 }
 
-# Print state space for verification
-for city, connections in state_space.items():
-    print(f"{city}: {connections}")
+# Breadth-First Search (BFS) implementation
 
-# Depth-First Search (DFS) implementation
-
-def dfs(state_space, start, goal):
-    open_list = [start]  # Stack for DFS
+def bfs(state_space, start, goal):
+    open_list = [start]  # Queue for BFS
     closed_list = []  # Visited nodes
 
     while open_list:
-        current = open_list.pop()  # Get the last element from the stack
+        current = open_list.pop(0)  # Get the first element from the queue
         closed_list.append(current)  # Mark as visited
 
         print(f"Visiting: {current}")
@@ -37,7 +33,7 @@ def dfs(state_space, start, goal):
             print("Goal reached!")
             return closed_list
 
-        # Add neighbors to the stack
+        # Add neighbors to the queue
         for neighbor in state_space[current]:
             if neighbor not in closed_list and neighbor not in open_list:
                 open_list.append(neighbor)
@@ -48,5 +44,5 @@ def dfs(state_space, start, goal):
 # Example usage
 start_city = "Glogow"
 goal_city = "Plock"
-path = dfs(state_space, start_city, goal_city)
+path = bfs(state_space, start_city, goal_city)
 print(f"Path from {start_city} to {goal_city}: {path}")
