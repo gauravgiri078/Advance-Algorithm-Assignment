@@ -98,7 +98,7 @@ class EmergencyNetworkSimulator:
             ("City1", "City5", 30),
             ("City1", "City3", 12),
             ("City2", "City4", 18),
-            ("City3", "City5", 22)
+            ("City3", "City5", 22)python
         ]
 
         for u, v, weight in predefined_roads:
